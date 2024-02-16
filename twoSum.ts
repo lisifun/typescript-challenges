@@ -12,7 +12,6 @@ nums = [3,2,4], target = 6  ===> [1,2]
 nums = [3,3], target = 6  ===> [0,1]
 */
 
-
 function twoSum(nums: number[], target: number): number[] | undefined {
     for (let i: number = 0; i < nums.length - 1; i++) {
         for (let j: number = i+1; j < nums.length; j++) {
