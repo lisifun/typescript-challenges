@@ -22,7 +22,28 @@ function twoSum(nums: number[], target: number): number[] | undefined {
     }
 }
 
-console.log(twoSum([2,7,11,15],9 ))
-console.log(twoSum([3,2,4],6))
-console.log(twoSum([3,3], 6))
+function twoSum2(nums: number[], target: number): number[] | undefined {
+    const myObjt: {[key: string]: number} = {}
+    for (let i: number = 0; i < nums.length; i++) {
+        let num = nums[i]
+        let diff = String(target -  num)
+        if (myObjt[diff] !== undefined) {
+            return [myObjt[diff], i]
+        } else {
+            myObjt[num.toString()] = i
+        }
+        
+    }
+    return undefined;
+}
 
+
+
+// console.log(twoSum([2,7,11,15],9 ))
+// console.log(twoSum([3,2,4],6))
+// console.log(twoSum([3,3], 6))
+
+
+console.log(twoSum2([2,7,11,15],9 ))
+console.log(twoSum2([3,2,4],6))
+console.log(twoSum2([3,3], 6))
