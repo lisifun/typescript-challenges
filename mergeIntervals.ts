@@ -18,16 +18,22 @@ function mergeIntervals(matrix: number[][]): number[][] | undefined{
         return element.sort((a,b) => a-b)
     })
 
-    console.log(sortedMatrix)
-    const result = []
+    const mergedIntervals = [sortedMatrix[0]]
 
-    for (let i= 0; i < sortedMatrix.length; i++) {
-       for (let j = 0; j < sortedMatrix[i].length; j++) {
-            
+    for (let i= 1; i < sortedMatrix.length; i++) {
+       const currentInterval = sortedMatrix[i]
+       const lastMergedInterval = sortedMatrix[mergedIntervals.length - 1]
+
+       if (currentInterval[0] <= lastMergedInterval[1]) {
+        lastMergedInterval[1] = Math.max(lastMergedInterval[1], currentInterval[1])
+       } else {
+        mergedIntervals.push(currentInterval)
        }
+       
     }
 
-    return undefined
+    return mergedIntervals
 }
 
-console.log(mergeIntervals([[1, 3], [2, 6], [8, 10], [15, 18]]))
+console.log(mergeIntervals([[1, 3], [2, 6], [10, 8], [18, 15]]))
+
